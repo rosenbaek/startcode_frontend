@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, Redirect, useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import useAuth from "../hooks/useAuth";
-import Facade from "../facades/Facade";
+import Facade from "../facades/loginFacade";
 
 export default function Login(props) {
 	const init = { username: "", password: "" };
@@ -23,6 +22,8 @@ export default function Login(props) {
 				const e = await err;
 				setError(e.message);
 				console.log(e);
+				//To reset form values
+				setLoginCredentials(init);
 			});
 	};
 
@@ -44,6 +45,7 @@ export default function Login(props) {
 						className="form-control"
 						placeholder="Username"
 						id="username"
+						value={loginCredentials.username}
 						required
 					/>
 				</Form.Group>
@@ -53,6 +55,7 @@ export default function Login(props) {
 						placeholder="Password"
 						id="password"
 						type="password"
+						value={loginCredentials.password}
 						required
 					/>
 				</Form.Group>

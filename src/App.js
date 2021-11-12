@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./App.css";
-import Login from "./components/Login";
+import Login from "./screens/LoginScreen";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Nav from "./components/Header";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./screens/HomeScreen";
 import ProtectedScreen from "./screens/ProtectedScreen";
-import Facade from "./facades/Facade";
+import Facade from "./facades/loginFacade";
 //import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 	const [loggedIn, setLoggedIn] = React.useState(Facade.loggedIn());
+	const [user, setUser] = useState();
 	let history = useHistory();
 
 	const changeLoginStatus = (pageToGo) => {
@@ -18,13 +19,17 @@ function App() {
 		history.push(pageToGo);
 	};
 
+	useEffect(() => {
+		setUser(Facade.getUser);
+	  },[loggedIn]);
+
 	return (
 		<div className="App">
 			<Nav loggedIn={loggedIn} changeLoginStatus={changeLoginStatus} />
 
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Home user={user}/>
 				</Route>
 
 				<PrivateRoute
@@ -34,7 +39,7 @@ function App() {
 				/>
 
 				<Route path="/login">
-					<Login changeLoginStatus={changeLoginStatus} />
+					<Login changeLoginStatus={changeLoginStatus}/>
 				</Route>
 			</Switch>
 		</div>

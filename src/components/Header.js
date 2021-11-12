@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { NavLink } from "react-router-dom";
-import Facade from "../facades/Facade";
+import Facade from "../facades/loginFacade";
 
 const Nav = (props) => {
 	const handleLogout = () => {

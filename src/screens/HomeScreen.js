@@ -1,8 +1,18 @@
-const Home = () => {
+const Home = (props) => {
 	return (
-		<div>
+		<>
 			<h2>Home</h2>
-		</div>
+			{props.user && (
+				<div>
+					<h4>Welcome {props.user.username}</h4>
+					<p>Roles:</p>
+					<ul>
+					{props.user.roles.map((role) =><li key={role}>{role}</li>)}
+					</ul>
+				</div>
+				)}
+		</>
+		
 	);
 };
 

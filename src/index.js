@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./hooks/useAuth";
 import reportWebVitals from "./reportWebVitals";
 
 const rootElement = document.getElementById("root");
