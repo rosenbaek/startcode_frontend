@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Login from "./screens/LoginScreen";
 import { Switch, Route, useHistory } from "react-router-dom";
@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./screens/HomeScreen";
 import ProtectedScreen from "./screens/ProtectedScreen";
 import Facade from "./facades/loginFacade";
+import AdminScreen from "./screens/AdminScreen";
 //import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -21,15 +22,20 @@ function App() {
 
 	useEffect(() => {
 		setUser(Facade.getUser);
-	  },[loggedIn]);
+		console.log(user);
+	}, [loggedIn, history]);
 
 	return (
 		<div className="App">
-			<Nav loggedIn={loggedIn} changeLoginStatus={changeLoginStatus} />
+			<Nav
+				loggedIn={loggedIn}
+				user={user}
+				changeLoginStatus={changeLoginStatus}
+			/>
 
 			<Switch>
 				<Route exact path="/">
-					<Home user={user}/>
+					<Home user={user} />
 				</Route>
 
 				<PrivateRoute
@@ -37,9 +43,15 @@ function App() {
 					loggedIn={loggedIn}
 					component={ProtectedScreen}
 				/>
+				<PrivateRoute
+					path="/admin"
+					loggedIn={loggedIn}
+					user={user}
+					component={AdminScreen}
+				/>
 
 				<Route path="/login">
-					<Login changeLoginStatus={changeLoginStatus}/>
+					<Login changeLoginStatus={changeLoginStatus} />
 				</Route>
 			</Switch>
 		</div>

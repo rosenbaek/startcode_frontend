@@ -17,8 +17,16 @@ const Nav = (props) => {
 						Home
 					</NavLink>
 				</li>
+
 				{props.loggedIn ? (
 					<>
+						{props.user && props.user.roles.includes("admin") && (
+							<li>
+								<NavLink exact="true" activeclassname="active" to="/admin">
+									Admin
+								</NavLink>
+							</li>
+						)}
 						<li style={{ float: "right" }}>
 							<a style={{ color: "white" }} onClick={handleLogout}>
 								Logout
