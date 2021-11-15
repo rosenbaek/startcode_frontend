@@ -82,9 +82,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Based on official documentation.
 
 1.  Update your BrowserRouter by adding a basename. Example: `<BrowserRouter basename="/webapp">`.
-2.  Specify a homepage on first line of your package.json. Example: `"homepage": "/webapp”`.
-3.  If you are referencing a static file by its relative path, you should add the subdirectory to that reference.
-4.  Example: `src="/static/logo/logo.png"` becomes `src="/webapp/static/logo/logo.png”`.  
+```react
+ReactDOM.render(
+	<React.StrictMode>
+		<Router basename="/webapp">
+			<App />
+		</Router>
+	</React.StrictMode>,
+	rootElement
+);
+```
+3.  Specify a homepage on first line of your package.json. Example: `"homepage": "/webapp”`.
+4.  If you are referencing a static file by its relative path, you should add the subdirectory to that reference.
+5.  Example: `src="/static/logo/logo.png"` becomes `src="/webapp/static/logo/logo.png”`.  
     
 
   
