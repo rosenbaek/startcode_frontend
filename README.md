@@ -95,7 +95,7 @@ ReactDOM.render(
 	rootElement
 );
 ```
-3.  Specify a homepage on first line of your package.json. Example: `"homepage": "/webapp”`.
+3.  Specify a homepage on first line of your package.json. Example: `"homepage": "/webapp"`.
 4.  If you are referencing a static file by its relative path, you should add the subdirectory to that reference.
 5.  Example: `src="/static/logo/logo.png"` becomes `src="/webapp/static/logo/logo.png”`.  
     
