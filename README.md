@@ -104,8 +104,8 @@ ReactDOM.render(
 
 1.  Add the following to package.json “scripts”  
     `"deploy": "bash ./script.sh”`
-2.  Create a script file named "script.sh” with the following (Change ip to yours):  
-    `scp -r ./build root@<ip address>:/var/www/metro`
+2.  Create a script file named "script.sh” with the following (Change ip and myapp to your basename):  
+    `scp -r ./build root@<ip address>:/var/www/myapp`
 3.  When all is set up run `npm run build`​ then `​npm run deploy`
 
 ### Nginx Changes:
